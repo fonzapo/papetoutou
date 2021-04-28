@@ -30,4 +30,5 @@ canvas.height = c_height;
 //ctx.fillRect(0, 0, c_width, c_height);
 
 let board = new Board(ctx, c_width, c_height);
-board.fillBoard();
+board.drawBoard();
+board.eventHandle();
