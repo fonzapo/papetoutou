@@ -1,4 +1,4 @@
-import Toutou from './toutou.js'
+import Toutou from './toutou.js';
 
 class Board {
     constructor(ctx, width, height) {
@@ -18,26 +18,18 @@ class Board {
         this._toutouY = 300;
 
         //vitesse
-        this._speedX = 1;
-        this._speedY = -1;
+        this._velocity = 1;
+        this._gravity = 1;
     }
-    eventHandle() {
+    update() {
+        this._toutouY += this._gravity;
         window.addEventListener('keydown', (event) => {
             console.log(`KEYDOWN ${event.code}`);
             switch (event.code) {
                 case 'ArrowRight':
-                    this._speedX += 1;
-                    this._toutouX += this._speedX;
+                    this._toutouX += this._velocity;
                     break;
-                case 'Space':
-                    this._speedY += 1;
-                    this._toutouY += this._speedY;
-                    break;
-
             }
-        });
-        window.addEventListener('keyup', (event) => {
-            console.log(`KEYUP ${event.code}`);
         });
     }
     drawBoard() {
@@ -50,12 +42,12 @@ class Board {
             this._then = this._now - (this._delta % this._interval);
         }
 
-        this._ctx.fillStyle = '#000000';
+        this._ctx.fillStyle = '#ffffff';
         this._ctx.fillRect(0, 0, this._c_width, this._c_height);
 
+        this.update();
         const toutou = new Toutou(this._toutouX, this._toutouY, this._ctx);
         toutou.draw();
-        //toutou.player_pos();
     }
 }
 
