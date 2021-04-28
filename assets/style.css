@@ -3,4 +3,8 @@
 
 body {
     font-family: "DM Sans", sans-serif;
+    background: linear-gradient(to right, rgb(42, 114, 39), rgb(128, 167, 77));
+}
+canvas {
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.171);
 }
